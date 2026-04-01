@@ -105,6 +105,11 @@ ${SCHEMA_DESCRIPTION}`,
 
 const httpServer = http.createServer(async (req, res) => {
   if (req.url === `/${process.env.SECRET_PATH}` && ["POST", "GET", "DELETE"].includes(req.method ?? "")) {
+    // Log headers para descubrir qué envía Claude sobre el usuario
+    console.log("=== REQUEST HEADERS ===");
+    console.log(JSON.stringify(req.headers, null, 2));
+    console.log("=======================");
+
     const server = new McpServer({ name: "mcp-asistencia", version: "1.0.0" });
     registrarTools(server);
     const transport = new StreamableHTTPServerTransport({
