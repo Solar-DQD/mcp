@@ -4,9 +4,9 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 const JWT_SECRET = process.env.JWT_SECRET!;
-const TENANT_ID = process.env.DIR_ID!;
-const CLIENT_ID = process.env.APP_ID!;
-const CLIENT_SECRET = process.env.CLIENT_SECRET!;
+const TENANT_ID = process.env.AZURE_TENANT_ID!;
+const CLIENT_ID = process.env.AZURE_CLIENT_ID!;
+const CLIENT_SECRET = process.env.AZURE_CLIENT_SECRET!;
 const BASE_URL = process.env.BASE_URL!;
 
 // State temporal: azureState → { redirectUri, codeVerifier, clientState }
