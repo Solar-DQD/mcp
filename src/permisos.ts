@@ -17,6 +17,6 @@ export async function obtenerModulosUsuario(email: string): Promise<string[]> {
   const result = await pool
     .request()
     .input("email", sql.NVarChar, email.toLowerCase())
-    .query<{ modulo: string }>("SELECT modulo FROM permisos WHERE LOWER(email) = @email");
+    .query<{ modulo: string }>("SELECT modulo FROM dbo.permisos WHERE LOWER(email) = @email");
   return result.recordset.map((r) => r.modulo);
 }
