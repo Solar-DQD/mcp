@@ -242,6 +242,7 @@ const httpServer = http.createServer(async (req, res) => {
     return;
   }
 
+  console.log(`[404] No matcheó: ${method} ${url.pathname} (esperado MCP: /${process.env.SECRET_PATH})`);
   res.writeHead(404);
   res.end();
 });
@@ -249,4 +250,5 @@ const httpServer = http.createServer(async (req, res) => {
 const PORT = parseInt(process.env.PORT || "3000");
 httpServer.listen(PORT, "0.0.0.0", () => {
   console.log(`MCP asistencia corriendo en http://0.0.0.0:${PORT}`);
+  console.log(`[DEBUG] SECRET_PATH="${process.env.SECRET_PATH}" → ruta esperada: "/${process.env.SECRET_PATH}"`);
 });
